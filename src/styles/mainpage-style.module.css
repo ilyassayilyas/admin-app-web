@@ -1,0 +1,41 @@
+.mainPage {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  background-color: #29323c;
+}
+
+.jusanLogo {
+  height: 4rem;
+  width: 7rem;
+}
+
+.linkGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+}
+
+.link {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+  color: #fff;
+  transition: all ease 0.3;
+}
+
+.link:hover {
+  background-color: black;
+}
