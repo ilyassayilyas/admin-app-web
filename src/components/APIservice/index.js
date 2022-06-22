@@ -9,6 +9,7 @@ export const loginRequest = async (loginFormData) => {
       body: JSON.stringify(loginFormData),
     });
     if (loginResponse.status !== 200) throw new Error(loginResponse.status);
+    console.log(loginResponse);
     return loginResponse;
   } catch (err) {
     alert(err.message);
@@ -26,10 +27,28 @@ export const logoutRequest = async () => {
       },
       body: JSON.stringify(""),
     });
-    if (logoutResponse.status !== 200) throw new Error(logoutResponse.status);
     return logoutResponse;
   } catch (err) {
     alert(err.message);
+    return;
+  }
+};
+
+export const getAdminData = async () => {
+  try {
+    const adminDataResponse = await fetch("http://164.92.192.48:8081/admin", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+      },
+    });
+    // if (adminDataResponse.status !== 200)
+    //   throw new Error(adminDataResponse.status);
+    console.log(await adminDataResponse.json());
+    return adminDataResponse;
+  } catch (err) {
+    // alert(err.message);
     return;
   }
 };

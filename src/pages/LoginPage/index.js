@@ -28,7 +28,7 @@ const LoginPage = (props) => {
       >
         <h3>Authorizarion</h3>
 
-        <label htmlFor="Username"> Username </label>
+        <label htmlFor="username"> Username </label>
         <input
           id="username"
           type="text"

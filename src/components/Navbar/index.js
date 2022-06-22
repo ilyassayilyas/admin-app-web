@@ -1,6 +1,7 @@
 import style from "../../styles/mainpage-style.module.css";
 import jusanLogo from "../../img/jusan-logo.png";
 import { logoutRequest } from "../APIservice";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const handleLogout = async () => {
@@ -12,7 +13,9 @@ const Navbar = (props) => {
     <div className={style.navbar}>
       <img src={jusanLogo} alt="jusan logo" className={style.jusanLogo} />
       <div className={style.linkGroup}>
-        <div className={style.link}>Admin Profile</div>
+        <Link className={style.link} to="/main/admintab">
+          Admin Profile
+        </Link>
         <div className={style.link} onClick={handleLogout}>
           Logout
         </div>
