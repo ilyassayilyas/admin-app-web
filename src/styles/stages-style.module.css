@@ -1,0 +1,43 @@
+.stageTab {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 85%;
+  height: 75%;
+  border: 5px solid black;
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.stageTab h3 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.stageTabNav {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid black;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.stageTabNavLink {
+  flex-grow: 1;
+  font-size: 1.5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease 0.5s;
+}
+
+.stageTabNavLink:hover {
+  background-color: black;
+  color: #fff;
+}

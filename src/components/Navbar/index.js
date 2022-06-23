@@ -12,8 +12,25 @@ const Navbar = (props) => {
   return (
     <div className={style.navbar}>
       <img src={jusanLogo} alt="jusan logo" className={style.jusanLogo} />
+      <div className={style.navbarCenterLinkGroup}>
+        <Link className={style.link} to="screeningtab">
+          Screening Stage
+        </Link>
+        <Link className={style.link} to="stepikpool">
+          Stepik Pool
+        </Link>
+        <Link className={style.link} to="exam">
+          Exam
+        </Link>
+        <Link className={style.link} to="autointerview">
+          Autointerview
+        </Link>
+        <Link className={style.link} to="techinterview">
+          Technical Interview
+        </Link>
+      </div>
       <div className={style.linkGroup}>
-        <Link className={style.link} to="/main/admintab">
+        <Link className={style.link} to="admintab">
           Admin Profile
         </Link>
         <div className={style.link} onClick={handleLogout}>

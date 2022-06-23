@@ -9,6 +9,7 @@ const dynamicCreateAdminTabStyles = (isHidden) => ({
 
 const AdminTab = () => {
   getAdminData();
+
   const [isCreateAdminTabHidden, setIsCreateAdminTabHidden] = useState("none");
   const [isCreateAdminBtnDisabled, setIsCreateAdminBtnDisabled] =
     useState(true);

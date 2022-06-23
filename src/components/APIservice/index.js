@@ -1,16 +1,20 @@
 export const loginRequest = async (loginFormData) => {
   try {
-    const loginResponse = await fetch("http://164.92.192.48:8081/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "*/*",
-      },
-      body: JSON.stringify(loginFormData),
-    });
+    const loginResponse = await fetch(
+      "http://164.92.192.48:8081/authenticate",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        body: JSON.stringify(loginFormData),
+      }
+    );
     if (loginResponse.status !== 200) throw new Error(loginResponse.status);
-    console.log(loginResponse);
-    return loginResponse;
+
+    const token = await loginResponse.text();
+    return [loginResponse, token];
   } catch (err) {
     alert(err.message);
     return;
@@ -40,15 +44,37 @@ export const getAdminData = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Accept: "*/*",
       },
     });
+    console.log(adminDataResponse);
     // if (adminDataResponse.status !== 200)
     //   throw new Error(adminDataResponse.status);
-    console.log(await adminDataResponse.json());
-    return adminDataResponse;
+    const result = await adminDataResponse.json();
+    console.log(result);
+    return result;
   } catch (err) {
+    console.log(err);
     // alert(err.message);
     return;
   }
 };
+
+// export const adminRegister = async (obj) => {
+//   try {
+//     const adminRegisterResponse = await fetch(
+//       "http://164.92.192.48:8081/register",
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Accept: "*/*",
+//         },
+//         body: JSON.stringify(obj),
+//       }
+//     );
+//     return adminRegisterResponse;
+//   } catch (err) {
+//     alert(err.message);
+//     return;
+//   }
+// };
