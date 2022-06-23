@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Navbar = (props) => {
   const handleLogout = async () => {
     await logoutRequest();
+    sessionStorage.clear();
     props.setLoginStatus(false);
   };
 
@@ -16,17 +17,17 @@ const Navbar = (props) => {
         <Link className={style.link} to="screeningtab">
           Screening Stage
         </Link>
-        <Link className={style.link} to="stepikpool">
-          Stepik Pool
-        </Link>
-        <Link className={style.link} to="exam">
-          Exam
+        <Link className={style.link} to="stepik">
+          Stepik
         </Link>
         <Link className={style.link} to="autointerview">
           Autointerview
         </Link>
-        <Link className={style.link} to="techinterview">
+        <Link className={style.link} to="techinterview" status="admin">
           Technical Interview
+        </Link>
+        <Link className={style.link} to="joboffer">
+          Job Offer
         </Link>
       </div>
       <div className={style.linkGroup}>

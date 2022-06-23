@@ -44,17 +44,36 @@ export const getAdminData = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        token: sessionStorage.getItem("token"),
       },
     });
-    console.log(adminDataResponse);
-    // if (adminDataResponse.status !== 200)
-    //   throw new Error(adminDataResponse.status);
     const result = await adminDataResponse.json();
-    console.log(result);
     return result;
   } catch (err) {
     console.log(err);
-    // alert(err.message);
+    alert(err.message);
+    return;
+  }
+};
+
+export const getScreeningStudents = async () => {
+  try {
+    const screeningStudentsResponse = await fetch(
+      "http://164.92.192.48:8090/students/students",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: sessionStorage.getItem("token"),
+        },
+      }
+    );
+    const result = await screeningStudentsResponse.json();
+    // console.log(result);
+    return result;
+  } catch (err) {
+    console.log(err);
+    alert(err.message);
     return;
   }
 };

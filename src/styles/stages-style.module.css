@@ -4,13 +4,11 @@
   justify-content: flex-start;
   align-items: center;
   width: 85%;
-  height: 75%;
+  height: 85%;
   border: 5px solid black;
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
+  margin: auto;
+  margin-top: 2rem;
 }
 
 .stageTab h3 {
@@ -19,7 +17,7 @@
 }
 
 .stageTabNav {
-  width: 50%;
+  width: 70%;
   display: flex;
   justify-content: space-between;
   border: 3px solid black;
@@ -27,7 +25,9 @@
   margin-top: 2rem;
 }
 
-.stageTabNavLink {
+.stageTabNavLink,
+.stageTabNavDeleteBtn,
+.stageTabNavShowTableBtn {
   flex-grow: 1;
   font-size: 1.5rem;
   height: 5rem;
@@ -37,7 +37,30 @@
   transition: all ease 0.5s;
 }
 
+.stageTabNavShowTableBtn {
+  background-color: yellowgreen;
+}
+
+.stageTabNavShowTableBtn:hover {
+  cursor: pointer;
+  background-color: green;
+}
+
+.stageTabNavDeleteBtn {
+  background-color: tomato;
+}
+
+.stageTabNavDeleteBtn:hover {
+  cursor: pointer;
+  background-color: red;
+}
+
 .stageTabNavLink:hover {
   background-color: black;
   color: #fff;
+}
+
+.table {
+  width: 80%;
+  margin-top: 30px;
 }

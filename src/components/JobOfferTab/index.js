@@ -1,6 +1,6 @@
 import style from "../../styles/stages-style.module.css";
 
-const ExamTab = () => {
+const JobOfferTab = () => {
   return (
     <div className={style.stageTab}>
       <h3>Exam Total Students:</h3>
@@ -16,4 +16,4 @@ const ExamTab = () => {
   );
 };
 
-export default ExamTab;
+export default JobOfferTab;

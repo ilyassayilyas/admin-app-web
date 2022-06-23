@@ -1,26 +1,25 @@
 import style from "../../styles/mainpage-style.module.css";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import { getAdminData } from "../APIservice";
 
 const dynamicCreateAdminTabStyles = (isHidden) => ({
   display: `${isHidden}`,
 });
 
-const AdminTab = () => {
-  getAdminData();
+const AdminTab = (props) => {
+  const { register: register2, handleSubmit: handleSubmit2 } = useForm();
+  const onSubmitExcelFile = async (data) => {
+    console.log(data);
+  };
 
   const [isCreateAdminTabHidden, setIsCreateAdminTabHidden] = useState("none");
   const [isCreateAdminBtnDisabled, setIsCreateAdminBtnDisabled] =
     useState(true);
 
-  const [isMasterAdmin, setIsMasterAdmin] = useState(false);
+  const [isUploadStepik, setIsUploadStepik] = useState("none");
 
-  useEffect(() => {
-    isMasterAdmin
-      ? setIsCreateAdminBtnDisabled(false)
-      : setIsCreateAdminBtnDisabled(true);
-  }, [isMasterAdmin]);
+  const isMaster = props.adminDataProps.isMaster;
+  const userName = props.adminDataProps.username;
 
   const handleClose = () => {
     setIsCreateAdminTabHidden("none");
@@ -32,21 +31,63 @@ const AdminTab = () => {
 
   const { handleSubmit, register } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
+    console.log(data.excel);
   };
+
+  const handleUploadStepikOpenTab = () => {
+    setIsUploadStepik("flex");
+  };
+
+  const handleCloseUploadStepikTab = () => {
+    setIsUploadStepik("none");
+  };
+
+  useEffect(() => {
+    isMaster
+      ? setIsCreateAdminBtnDisabled(false)
+      : setIsCreateAdminBtnDisabled(true);
+  }, [isMaster]);
 
   return (
     <div className={style.adminTab}>
-      <button
-        className={style.createAdminOpenBtn}
-        disabled={isCreateAdminBtnDisabled}
-        onClick={handleCreateAdminBtnClick}
-      >
-        Create New Admin
-      </button>
+      <div className={style.adminTabContentContainer}>
+        <h3>{`Status: ${isMaster ? "Master Admin" : "Admin"}`}</h3>
+        <h3>{`Username: ${userName}`} </h3>
+        <button
+          className={style.uploadStepik}
+          onClick={handleUploadStepikOpenTab}
+        >
+          Upload Stepik Excel
+        </button>
 
-      <h3>Username: </h3>
-      <h3>{`Status: ${isMasterAdmin ? "Master Admin" : "Admin"}`}</h3>
+        <button
+          className={style.createAdminOpenBtn}
+          disabled={isCreateAdminBtnDisabled}
+          onClick={handleCreateAdminBtnClick}
+        >
+          Create New Admin
+        </button>
+      </div>
+
+      <form
+        className={style.uploadStepikTab}
+        style={dynamicCreateAdminTabStyles(isUploadStepik)}
+        onSubmit={handleSubmit2(onSubmitExcelFile)}
+        encType="multipart/form-data"
+      >
+        <h3>Choose File</h3>
+        <input
+          {...register2("excel")}
+          type="file"
+          name="excel"
+          className={style.fileInput}
+        />
+        <button className={style.uploadStepikTabBtn}>Upload</button>
+        <div
+          className={style.closeBtn}
+          onClick={handleCloseUploadStepikTab}
+        ></div>
+      </form>
 
       <form
         className={style.createAdminTab}

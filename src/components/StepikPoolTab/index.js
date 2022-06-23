@@ -1,9 +1,9 @@
 import style from "../../styles/stages-style.module.css";
 
-const StepikPoolTab = () => {
+const StepikTab = () => {
   return (
     <div className={style.stageTab}>
-      <h3>Stepik Pool Total Students:</h3>
+      <h3>Stepik Total Students:</h3>
       <nav className={style.stageTabNav}>
         <div className={style.stageTabNavLink}>All</div>
         <div className={style.stageTabNavLink}>Frontend</div>
@@ -16,4 +16,4 @@ const StepikPoolTab = () => {
   );
 };
 
-export default StepikPoolTab;
+export default StepikTab;
