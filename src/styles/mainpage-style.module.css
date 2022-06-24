@@ -22,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40%;
+  width: 60%;
   height: 100%;
 }
 
@@ -150,7 +150,19 @@
 }
 
 .fileInput {
-  background-color: transparent;
+  margin-top: 3rem;
+  border: 1px solid black;
+  padding: 1rem;
+  display: block;
+  cursor: pointer;
+  background: none;
+  color: black;
+}
+
+.fileName {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
 }
 
 .uploadStepikTab button:hover {

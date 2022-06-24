@@ -1,25 +1,25 @@
 import style from "../../styles/stages-style.module.css";
-import UserTable from "../UserTable";
+import ScreeningUserTable from "../UserTables/ScreeningUserTable";
 import { useState, useEffect } from "react";
 import { getScreeningStudents } from "../APIservice";
 
 const ScreeningTab = () => {
-  const [screeningStudents, setScreeningStudents] = useState([]);
+  const [students, setStudents] = useState([]);
 
-  const getScreeningStudentsData = async () => {
+  const getStudentsData = async () => {
     const data = await getScreeningStudents();
-    setScreeningStudents(data);
+    setStudents(data);
   };
 
   useEffect(() => {
-    getScreeningStudentsData();
+    getStudentsData();
   }, []);
-
-  //   const screeningStudentsLength = screeningStudents.length;
 
   return (
     <div className={style.stageTab}>
-      <h3>Total Students:</h3>
+      <h3
+        className={style.stageTabHeader}
+      >{`Total Students : ${students.length}`}</h3>
       <nav className={style.stageTabNav}>
         <div className={style.stageTabNavLink}>All</div>
         <div className={style.stageTabNavLink}>Frontend</div>
@@ -30,7 +30,7 @@ const ScreeningTab = () => {
         <div className={style.stageTabNavDeleteBtn}>Dismiss Student</div>
       </nav>
 
-      <UserTable screeningStudents={screeningStudents} />
+      <ScreeningUserTable students={students} />
     </div>
   );
 };

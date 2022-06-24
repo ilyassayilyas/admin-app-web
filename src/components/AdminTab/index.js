@@ -1,17 +1,13 @@
 import style from "../../styles/mainpage-style.module.css";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
+import { sendStepikExcelRequest, registerAdminRequest } from "../APIservice";
 
 const dynamicCreateAdminTabStyles = (isHidden) => ({
   display: `${isHidden}`,
 });
 
 const AdminTab = (props) => {
-  const { register: register2, handleSubmit: handleSubmit2 } = useForm();
-  const onSubmitExcelFile = async (data) => {
-    console.log(data);
-  };
-
   const [isCreateAdminTabHidden, setIsCreateAdminTabHidden] = useState("none");
   const [isCreateAdminBtnDisabled, setIsCreateAdminBtnDisabled] =
     useState(true);
@@ -31,7 +27,12 @@ const AdminTab = (props) => {
 
   const { handleSubmit, register } = useForm();
   const onSubmit = async (data) => {
-    console.log(data.excel);
+    await registerAdminRequest(data);
+  };
+  const { register: register2, handleSubmit: handleSubmit2, watch } = useForm();
+  const onSubmitExcelFile = async (data) => {
+    console.log(data.excel[0]);
+    await sendStepikExcelRequest(data.excel[0]);
   };
 
   const handleUploadStepikOpenTab = () => {
@@ -75,13 +76,35 @@ const AdminTab = (props) => {
         onSubmit={handleSubmit2(onSubmitExcelFile)}
         encType="multipart/form-data"
       >
-        <h3>Choose File</h3>
-        <input
-          {...register2("excel")}
-          type="file"
-          name="excel"
-          className={style.fileInput}
-        />
+        <h3>Upload Final Excel</h3>
+        {!watch("excel") || watch("excel").length === 0 ? (
+          <div>
+            <label htmlFor="excel-upload" className={style.fileInput}>
+              Choose File
+              <input
+                style={{ display: "none" }}
+                {...register2("excel")}
+                id="excel-upload"
+                type="file"
+                name="excel"
+              />
+            </label>
+          </div>
+        ) : (
+          <div>
+            <label htmlFor="excel-upload" className={style.fileInput}>
+              Choose File
+              <input
+                style={{ display: "none" }}
+                {...register2("excel")}
+                id="excel-upload"
+                type="file"
+                name="excel"
+              />
+            </label>
+            <div className={style.fileName}>{watch("excel")[0].name}</div>
+          </div>
+        )}
         <button className={style.uploadStepikTabBtn}>Upload</button>
         <div
           className={style.closeBtn}
