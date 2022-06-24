@@ -95,6 +95,26 @@ export const getJobOfferStudents = async () => {
   }
 };
 
+export const getUnacceptedStudents = async () => {
+  try {
+    const response = await fetch(
+      "http://164.92.192.48:8090/students/dismissed",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: sessionStorage.getItem("token"),
+        },
+      }
+    );
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    alert(err.message);
+    return;
+  }
+};
+
 export const sendStepikExcelRequest = async (file) => {
   try {
     const formData = new FormData();

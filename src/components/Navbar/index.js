@@ -29,6 +29,9 @@ const Navbar = (props) => {
         <Link className={style.link} to="joboffer">
           Job Offer
         </Link>
+        <Link className={style.link} to="unaccepted">
+          Unaccepted
+        </Link>
       </div>
       <div className={style.linkGroup}>
         <Link className={style.link} to="admintab">

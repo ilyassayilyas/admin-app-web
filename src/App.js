@@ -6,6 +6,7 @@ import StepikTab from "./components/StepikPoolTab";
 import JobOfferTab from "./components/JobOfferTab";
 import AutoIntTab from "./components/AutoIntTab";
 import TechIntTab from "./components/TechIntTab";
+import UnacceptedTab from "./components/UnacceptedTab";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { getAdminData } from "./components/APIservice";
 import { useState, useEffect } from "react";
@@ -30,10 +31,6 @@ function App() {
       : navigate("/");
   }, [isLoged]);
 
-  // useEffect(() => {
-  //   console.log(window.location.pathname);
-  // }, [window.location.pathname]);
-
   return (
     <div className="App">
       <Routes>
@@ -48,6 +45,7 @@ function App() {
           <Route path="autointerview" element={<AutoIntTab />} />
           <Route path="techinterview" element={<TechIntTab />} />
           <Route path="joboffer" element={<JobOfferTab />} />
+          <Route path="unaccepted" element={<UnacceptedTab />} />
         </Route>
       </Routes>
     </div>
