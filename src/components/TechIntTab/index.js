@@ -14,6 +14,7 @@ const TechIntTab = () => {
         <div className={style.stageTabNavLink}>Android</div>
         <div className={style.stageTabNavLink}>Devops</div>
       </nav>
+      <h3 className={style.labelWarning}>To be continued...</h3>
     </div>
   );
 };

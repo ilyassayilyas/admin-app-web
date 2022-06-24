@@ -19,7 +19,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    isLoged ? navigate("/main") : navigate("/");
+    isLoged ? navigate("/main/screeningtab") : navigate("/");
   }, [isLoged]);
 
   useEffect(() => {

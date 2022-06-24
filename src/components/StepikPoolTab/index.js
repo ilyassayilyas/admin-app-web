@@ -13,7 +13,7 @@ const StepikTab = () => {
         <div className={style.stageTabNavLink}>Devops</div>
         <div className={style.stageTabNavDeleteBtn}>Dismiss Student</div>
       </nav>
-      <h3 className={style.stepikLabelWarning}>
+      <h3 className={style.labelWarning}>
         Upload Final Stepik Table In Admin Profile!
       </h3>
     </div>

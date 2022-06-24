@@ -65,7 +65,7 @@
   margin-top: 30px;
 }
 
-.stepikLabelWarning {
+.labelWarning {
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
