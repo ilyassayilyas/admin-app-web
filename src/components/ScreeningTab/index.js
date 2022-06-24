@@ -2,6 +2,7 @@ import style from "../../styles/stages-style.module.css";
 import ScreeningUserTable from "../UserTables/ScreeningUserTable";
 import { useState, useEffect } from "react";
 import { getScreeningStudents } from "../APIservice";
+import { sendEmailRequest } from "../APIservice";
 
 const ScreeningTab = () => {
   const [students, setStudents] = useState([]);
@@ -9,6 +10,19 @@ const ScreeningTab = () => {
   const getStudentsData = async () => {
     const data = await getScreeningStudents();
     setStudents(data);
+  };
+
+  const handleSendEmail = async () => {
+    const email = [];
+    const newStudentArray = [...students];
+
+    newStudentArray.forEach((student) => {
+      const object = {};
+      object.email = student.email;
+      email.push(object);
+    });
+
+    await sendEmailRequest(email);
   };
 
   useEffect(() => {
@@ -29,8 +43,10 @@ const ScreeningTab = () => {
         <div className={style.stageTabNavLink}>Devops</div>
         <div className={style.stageTabNavDeleteBtn}>Dismiss Student</div>
       </nav>
-
       <ScreeningUserTable students={students} />
+      <button className={style.sendEmailBtn} onClick={handleSendEmail}>
+        Send Email
+      </button>
     </div>
   );
 };

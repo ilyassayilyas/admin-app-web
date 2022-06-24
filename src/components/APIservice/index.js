@@ -1,5 +1,3 @@
-const animation = new Animation();
-
 export const loginRequest = async (loginFormData) => {
   try {
     const loginResponse = await fetch(
@@ -52,7 +50,6 @@ export const getAdminData = async () => {
     const result = await adminDataResponse.json();
     return result;
   } catch (err) {
-    console.log(err);
     alert(err.message);
     return;
   }
@@ -73,7 +70,6 @@ export const getScreeningStudents = async () => {
     const result = await response.json();
     return result;
   } catch (err) {
-    console.log(err);
     alert(err.message);
     return;
   }
@@ -94,7 +90,6 @@ export const getJobOfferStudents = async () => {
     const result = await response.json();
     return result;
   } catch (err) {
-    console.log(err);
     alert(err.message);
     return;
   }
@@ -128,26 +123,41 @@ export const sendStepikExcelRequest = async (file) => {
 
 export const registerAdminRequest = async (registerAdminData) => {
   try {
-    const registerAdminResponse = await fetch(
-      "http://164.92.192.48:8081/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "*/*",
-          token: sessionStorage.getItem("token"),
-        },
-        body: JSON.stringify(registerAdminData),
-      }
-    );
-    if (registerAdminResponse.status !== 200)
-      throw new Error(registerAdminResponse.status);
-    const result = await registerAdminResponse.json();
+    const response = await fetch("http://164.92.192.48:8081/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+        token: sessionStorage.getItem("token"),
+      },
+      body: JSON.stringify(registerAdminData),
+    });
+    if (response.status !== 200) throw new Error(response.status);
+    const result = await response.json();
     return result;
   } catch (err) {
-    console.log(err);
     alert(err.message);
     return;
+  }
+};
+
+export const sendEmailRequest = async (email) => {
+  try {
+    const response = await fetch("http://164.92.192.48:8090/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "*/*",
+        token: sessionStorage.getItem("token"),
+      },
+      body: JSON.stringify(email),
+    });
+    const result = await response.text();
+    return result;
+  } catch (err) {
+    return;
+  } finally {
+    alert("SUCCESS!");
   }
 };
 

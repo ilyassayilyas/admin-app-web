@@ -73,3 +73,22 @@
   font-size: 2rem;
   color: tomato;
 }
+
+.sendEmailBtn {
+  margin-top: 1rem;
+  background: transparent;
+  border: rgb(70, 72, 196) 3px solid;
+  color: rgb(70, 72, 196);
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  transition: all ease 0.3s;
+}
+
+.sendEmailBtn:hover {
+  border: green 3px solid;
+  color: green;
+}
+
+.sendEmailBtn:active {
+  transform: scale(0.8);
+}
