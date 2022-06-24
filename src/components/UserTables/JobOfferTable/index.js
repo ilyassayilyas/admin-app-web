@@ -26,7 +26,7 @@ const JobOfferUserTable = (props) => {
         columns={columns}
         itemKey={(row) => row.id}
         rowHeight={35}
-        tableHeight={500}
+        tableHeight={300}
         sortColumn="fullName"
         sortDirection="ASC"
       />
