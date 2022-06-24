@@ -26,7 +26,7 @@ const ScreeningUserTable = (props) => {
         columns={columns}
         itemKey={(row) => row.id}
         rowHeight={35}
-        tableHeight={500}
+        tableHeight={400}
         sortColumn="fullName"
         sortDirection="ASC"
       />
